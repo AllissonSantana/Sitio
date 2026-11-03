@@ -1,0 +1,579 @@
+
+/* =====================================
+   1. VARIÁVEIS GLOBAIS
+===================================== */
+:root {
+  --pink: #f45b9a;
+  --pink-dark: #d83c7d;
+  --pink-light: #fff0f7;
+
+  --blue: #bdebfA;
+  --blue-light: #effaff;
+  --blue-dark: #174a70;
+
+  --text: #30465c;
+  --muted: #718198;
+  --white: #ffffff;
+  --border: #e5edf5;
+
+  --shadow: 0 10px 35px rgba(23, 74, 112, 0.08);
+  --radius: 18px;
+  --container: 1200px;
+}
+
+/* =====================================
+   2. RESET E CONFIGURAÇÕES GERAIS
+===================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(56px, 8vw, 100px);
+}
+
+.highlight {
+  color: var(--pink);
+}
+
+.section-title {
+  color: var(--blue-dark);
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-description {
+  max-width: 650px;
+  margin: 0 auto 38px;
+  color: var(--muted);
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 5px 13px;
+  margin-bottom: 14px;
+  border-radius: 50px;
+  background: var(--blue-light);
+  color: var(--blue-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+/* =====================================
+   3. CABEÇALHO E NAVEGAÇÃO
+===================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+}
+
+.navbar {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--blue-dark);
+  font-size: 1.35rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.logo-symbol {
+  color: var(--pink);
+  font-size: 1.7rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 28px);
+}
+
+.nav-links a {
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--pink-dark);
+}
+
+.menu-toggle {
+  display: none;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--blue-dark);
+  background: var(--white);
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+/* =====================================
+   4. BOTÕES
+===================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 46px;
+  padding: 12px 22px;
+
+  border: 1px solid transparent;
+  border-radius: 50px;
+
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  color: var(--white);
+  background: var(--pink);
+}
+
+.btn-primary:hover {
+  background: var(--pink-dark);
+}
+
+.btn-outline {
+  color: var(--blue-dark);
+  background: transparent;
+  border-color: #a9c9dc;
+}
+
+.btn-outline:hover {
+  background: var(--blue-light);
+}
+
+/* =====================================
+   5. APRESENTAÇÃO
+===================================== */
+.hero {
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      var(--blue) 0,
+      transparent 34%
+    ),
+    linear-gradient(115deg, var(--pink-light), #fff 65%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(32px, 6vw, 76px);
+}
+
+.hero h1 {
+  max-width: 650px;
+  margin: 0 0 24px;
+
+  color: var(--blue-dark);
+  font-size: clamp(2.2rem, 5vw, 4.1rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.hero p {
+  max-width: 540px;
+  margin-bottom: 28px;
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-visual {
+  min-height: 330px;
+  display: grid;
+  place-items: center;
+}
+
+.visual-card {
+  width: min(100%, 410px);
+  min-height: 270px;
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+
+  transform: rotate(2deg);
+}
+
+.visual-icon {
+  margin-bottom: 16px;
+  color: var(--pink);
+  font-size: 3.4rem;
+}
+
+.visual-card h2 {
+  margin: 0 0 8px;
+  color: var(--blue-dark);
+}
+
+.mini-bar {
+  width: 100%;
+  height: 10px;
+  margin-top: 12px;
+  border-radius: 20px;
+  background: var(--blue-light);
+}
+
+.mini-bar.pink {
+  width: 68%;
+  background: #ffd0e4;
+}
+
+/* =====================================
+   6. RECURSOS E BENEFÍCIOS
+===================================== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.feature {
+  padding: 26px 20px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.feature-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  font-size: 1.6rem;
+}
+
+.feature h3 {
+  margin: 0 0 10px;
+  color: var(--blue-dark);
+}
+
+.feature p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+/* =====================================
+   7. SOBRE
+===================================== */
+.about {
+  background: var(--blue-light);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(30px, 7vw, 80px);
+}
+
+.about-visual {
+  min-height: 290px;
+  display: grid;
+  place-items: center;
+
+  border-radius: 28px;
+  background: linear-gradient(135deg, #ffd7e8, var(--blue));
+  font-size: clamp(5rem, 12vw, 9rem);
+}
+
+.about-copy p {
+  margin-bottom: 24px;
+  color: var(--muted);
+}
+
+/* =====================================
+   8. SERVIÇOS
+===================================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.service {
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.service h3 {
+  color: var(--blue-dark);
+}
+
+.service p {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.service a {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--pink-dark);
+  font-weight: 700;
+}
+
+/* =====================================
+   9. CHAMADA PARA AÇÃO
+===================================== */
+.cta {
+  padding-block: 65px;
+  text-align: center;
+  background: linear-gradient(
+    120deg,
+    var(--pink-light),
+    var(--blue-light)
+  );
+}
+
+.cta h2 {
+  margin-top: 0;
+  color: var(--blue-dark);
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+}
+
+/* =====================================
+   10. RODAPÉ
+===================================== */
+.footer {
+  padding-block: 30px;
+  color: var(--muted);
+  background: #f9fbfd;
+  border-top: 1px solid var(--border);
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* =====================================
+   11. TABLETS E TELAS MÉDIAS
+===================================== */
+@media (max-width: 1000px) {
+  .features-grid,
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+}
+
+/* =====================================
+   12. CELULARES E MENU MÓVEL
+===================================== */
+@media (max-width: 760px) {
+  .container {
+    width: min(calc(100% - 32px), var(--container));
+  }
+
+  .navbar {
+    min-height: 68px;
+  }
+
+  .menu-toggle {
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+
+    padding: 18px 24px 24px;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 13px 0;
+  }
+
+  .nav-links .btn {
+    margin-top: 10px;
+  }
+
+  .hero-grid,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 54px;
+  }
+
+  .hero-visual {
+    min-height: 260px;
+  }
+
+  .visual-card {
+    min-height: 230px;
+  }
+
+  .about-visual {
+    min-height: 230px;
+  }
+}
+
+/* =====================================
+   13. CELULARES PEQUENOS
+===================================== */
+@media (max-width: 480px) {
+  .features-grid,
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .feature,
+  .service {
+    padding: 22px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =====================================
+   14. ACESSIBILIDADE: MENOS ANIMAÇÃO
+===================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
